@@ -9,6 +9,33 @@ knn = joblib.load("knn_model.pkl")
 # Mapping numerical labels to species names
 species_mapping = {0: "Setosa", 1: "Versicolor", 2: "Virginica"}
 
+# Custom CSS for background image and transparency
+import base64
+
+def get_base64_image(image_path):
+    with open(image_path, "rb") as img_file:
+        return base64.b64encode(img_file.read()).decode()
+    
+
+background_base64 = get_base64_image(r"C:\Users\Siyumi Jayawardhane\OneDrive - Informatics Institute of Technology\Certificates\Projects_25\Iris_Flower_Classifiation\Iris_Flower_CLassification\web\bg.png")
+
+st.markdown(
+    f"""
+    <style>
+        .stApp {{
+            background-image: url("data:image/png;base64,{background_base64}");
+            background-size: cover;
+        }}
+        .stTitle, .stTextInput, .stNumberInput, .stButton, .stMarkdown {{
+            background-color: rgba(255, 255, 255, 0.5); /* White with 80% opacity */
+            padding: 10px;
+            border-radius: 10px;
+        }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 st.title("Iris Flower Species Prediction 🌺")
 
 # User Inputs with automatic decimal conversion
