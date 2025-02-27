@@ -4,8 +4,8 @@ import numpy as np
 import base64
 
 # Load trained models
-log_reg = joblib.load("logistic_regression_model.pkl")
-knn = joblib.load("knn_model.pkl")
+log_reg = joblib.load("web/logistic_regression_model.pkl")
+knn = joblib.load("web/knn_model.pkl")
 
 # Mapping numerical labels to species names
 species_mapping = {0: "Setosa", 1: "Versicolor", 2: "Virginica"}
@@ -15,7 +15,7 @@ def get_base64_image(image_path):
     with open(image_path, "rb") as img_file:
         return base64.b64encode(img_file.read()).decode()
 
-background_base64 = get_base64_image(r"C:\Users\Siyumi Jayawardhane\OneDrive - Informatics Institute of Technology\Certificates\Projects_25\Iris_Flower_Classifiation\Iris_Flower_CLassification\web\bg.png")
+background_base64 = get_base64_image(r"web/bg.png")
 
 # Custom CSS for styling
 st.markdown(
